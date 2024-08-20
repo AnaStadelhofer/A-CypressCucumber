@@ -1,12 +1,80 @@
 # Cypress e Cucumber
 
-Este repositorio foi criado com a finalidade de estudar a integração do Cypress com o Cucumber, que é uma ferramente de teste de software que suporta o BDD (Behavior Driven Development), permintindo uma comunicação/entediment mais eficaz e clara, até para pessoas sem o conhecimentos tecnicos.
+Este repositorio foi criado com a finalidade de estudar a integração do Cypress com o Cucumber, que é uma ferramente de teste de software que suporta o BDD (Behavior Driven Development), permintindo uma comunicação/entedimento mais eficaz e clara, até para pessoas sem o conhecimentos tecnicos.
+
+## Configurando o ambiente
+
+Antes de tudo, temos que instalar algumas ferramentas necessárias para a execução dos testes:
+
+1. Instalar o [NodeJS](https://nodejs.org/dist/v20.16.0/node-v20.16.0-x64.msi);
+2. Instalar o [VS Code](https://code.visualstudio.com/download) ou alguma outra IDE de sua prefêrencia;
+3. Instalar o [Git](https://git-scm.com/downloads) para conseguir efetuar comandos do próprio git.
+
+Após a instalação deles, é necessário apenas efetuar o ```git clone``` do projeto. Após o clone, rodar o ```npm install``` para instalar todas as dependencias do projeto.
+
+Pronto! Agora para abrir e executar o projeto, pasta rodar o seguinte comando no terminal do windows dentro da pasta 'A-CypressCucumber': ```npx cypress open```
 
 ## Como efetuar a configuração do zero?
 
+Aqui neste tópico, irei explicar mais detalhado como fiz a configuração do cucumber no projeto de cypress, para fins de documentação.
 
-Sites que foram usados para o estudo:
+O primeiro passo é criar uma pasta que ficará armazenado o projeto, instalando o cypress e o cucumber, com os seguintes comando:
 
-https://vinothqaacademy.com/demo-site/
-https://medium.com/cwi-software/testes-automatizados-com-cypress-e-cucumber-d78b211da766
+```
+npm install cypress --save-dev
+npm install cypress-cucumber-preprocessor --save-dev
+```
+
+Após isso, devemos executar o cypress para que seja gerado as pastas com os arquivos necessários, rodando com comando de ```npx cypress open```. Após isso, selecione a opção E2E Testing e selecione um navegador de sua prefêrencia.
+
+Após rodar o Cypress, podemos fechar ele pois já foi gerado as pastas necessárias, que estão dentro da ```cypress```.
+
+Para iniciar a configuração do cucumber no projeto, iremos alterar o arquivo **cypress.config.js**, adicionando o seguinte codigo na primeira linha:
+
+```const cucumber = require('cypress-cucumber-preprocessor').default;```
+
+E adicionando o código configuração dentro do **module.exports**:
+
+```on('file:preprocessor', cucumber())```
+
+E por último, ainda no mesmo arquivo, adicionar o seguinte código após o fechando do setupNodeEventos:
+
+```specPattern: "cypress/e2e/step_definitions/*.feature"```
+
+Ficando da seguinte forma o arquivo no final:
+
+```
+const cucumber = require('cypress-cucumber-preprocessor').default;
+const { defineConfig } = require("cypress");
+
+module.exports = defineConfig({
+  e2e: {
+    setupNodeEvents(on, config) {
+      on('file:preprocessor', cucumber())
+    },
+    specPattern: "cypress/e2e/step_definitions/*.feature"
+  },
+});
+```
+
+alterar o package.json
+
+"cypress-cucumber-preprocessor": {
+  "nonGlobalStepDefinitions": true,
+  "stepDefinitions": "cypress/e2e/step_definitions"
+}
+
+- nonGlobalStepDefinitions: Este é um comando padrão do plugin e é essencial para o seu correto funcionamento.
+
+- "stepDefinitions": "cypress/e2e/step_definitions": Aqui, especificamos o caminho para a pasta que contém as definições de etapas dos nossos testes. No exemplo, estamos definindo que nossos arquivos .js de definição de etapas estão na própria pasta step_definitions.
+
+
+# Informações adicionais
+
+Neste projeto foi usado o seguinte [site](https://vinothqaacademy.com/demo-site/) para a aplicação do cypress com cucumber.
+
+Para aprender sobre a implementação do cucumebr no cypress, foi utilizado dois blogs:
+- [Diego Yuri, cypress mais atualizado](https://dev.to/yuri-aprendendoqa/aprenda-a-implementar-cucumber-ao-cypress-em-testes-automatizados-4e62)
+- [Gabriel Cartelli, cypress mais antigo](https://medium.com/cwi-software/testes-automatizados-com-cypress-e-cucumber-d78b211da766)
+
 
