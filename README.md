@@ -16,13 +16,11 @@ Pronto! Agora para abrir e executar o projeto, pasta rodar o seguinte comando no
 
 ## Como efetuar a configuração do zero?
 
-Aqui neste tópico, irei explicar mais detalhado como fiz a configuração do cucumber no projeto de cypress, para fins de documentação.
-
-O primeiro passo é criar uma pasta que ficará armazenado o projeto, instalando o cypress e o cucumber, com os seguintes comando:
+Aqui neste tópico, irei explicar mais detalhado como fiz a configuração do cucumber no projeto de cypress, para fins de documentação. O primeiro passo é criar uma pasta que ficará armazenado o projeto, instalando o cypress e o cucumber, com os seguintes comando:
 
 ```
-npm install cypress --save-dev
-npm install cypress-cucumber-preprocessor --save-dev
+npm install cypress
+npm install cypress-cucumber-preprocessor 
 ```
 
 Após isso, devemos executar o cypress para que seja gerado as pastas com os arquivos necessários, rodando com comando de ```npx cypress open```. Após isso, selecione a opção E2E Testing e selecione um navegador de sua prefêrencia.
@@ -37,7 +35,7 @@ E adicionando o código configuração dentro do **module.exports**:
 
 ```on('file:preprocessor', cucumber())```
 
-E por último, ainda no mesmo arquivo, adicionar o seguinte código após o fechando do setupNodeEventos:
+E por último, ainda no mesmo arquivo, adicionar o seguinte código após o fechando do setupNodeEventos. Ele basicamente vai indicar onde estão os arquivos ```.features``` que terá o BDD.
 
 ```specPattern: "cypress/e2e/step_definitions/*.feature"```
 
@@ -57,16 +55,28 @@ module.exports = defineConfig({
 });
 ```
 
+Após as configurações é necessário editar por fim o arquivo do package.json, adicionando o seguinte codigo. 
 alterar o package.json
 
+```
 "cypress-cucumber-preprocessor": {
   "nonGlobalStepDefinitions": true,
   "stepDefinitions": "cypress/e2e/step_definitions"
 }
+```
 
-- nonGlobalStepDefinitions: Este é um comando padrão do plugin e é essencial para o seu correto funcionamento.
+Dentro da pasta e2e iremos criar a pasta ```step_definitions``` e dentro dela, iremos criar uma pasta para cada arquivo ```.feature``` que foi criado na e2e.
+- Os arquivos features conterá o cucumber;
+- pasta/arquivo.cy.js irá ter os arquivos com o codigo de automação em cypress.
 
-- "stepDefinitions": "cypress/e2e/step_definitions": Aqui, especificamos o caminho para a pasta que contém as definições de etapas dos nossos testes. No exemplo, estamos definindo que nossos arquivos .js de definição de etapas estão na própria pasta step_definitions.
+A estrutura do projeto ficará da seguinte forma:
+```
+- e2e
+    - step_definitions
+        - arquivo.feature
+        - arquivo (pasta)
+            - arquivo.cy.js
+```
 
 
 # Informações adicionais
