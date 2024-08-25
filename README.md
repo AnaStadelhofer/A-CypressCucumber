@@ -2,6 +2,9 @@
 
 Este repositorio foi criado com a finalidade de estudar a integração do Cypress com o Cucumber, que é uma ferramente de teste de software que suporta o BDD (Behavior Driven Development), permintindo uma comunicação/entedimento mais eficaz e clara, até para pessoas sem o conhecimentos tecnicos.
 
+npx cypress run
+npx cypress open
+
 ## Configurando o ambiente
 
 Antes de tudo, temos que instalar algumas ferramentas necessárias para a execução dos testes:

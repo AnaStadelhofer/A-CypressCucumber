@@ -1,57 +1,49 @@
-import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-
-const password = 'secret_sauce'
+import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps'; 
 
 Given("que o site seja acessado", () => {
-
-    cy.visit("https://www.saucedemo.com/v1/index.html");
-
+    cy.visit("https://www.saucedemo.com/v1/index.html")
     cy.title()
         .should('eq', 'Swag Labs')
 });
 
 // Cenário 1
-
 When("preenchido as credenciais de acesso {string}", (username) => {
-
-    cy.get('[data-test="username"]')
-        .type(username)
-
-    cy.get('[data-test="password"]')
-        .type(password)
-
-    cy.get('#login-button')
-        .click()
-
+    cy.fixture('user').then((user) => {
+        cy.Login(username, user.password)
+    })
 });
 
 Then("o usuário deve logar", () => {
-
     cy.get('.product_label')
         .should('exist')
         .contains('Products')
-
 });
 
 // Cenário 2
-
 When("preenchido as credenciais invalídas", () => {
-
-    cy.get('[data-test="username"]')
-        .type('Usuário inexistente')
-
-    cy.get('[data-test="password"]')
-        .type(password)
-
-    cy.get('#login-button')
-        .click()
-
+    cy.fixture('user').then((user) => {
+        cy.Login('Usuário inexistente', user.password)
+    })
 });
 
 Then("deve retornar o erro {string}", (error) => {
-
-    cy.get('[data-test="error"]')
-        .should('exist')
-        .contains(error)
-
+    cy.ErrorMessage(error)
 });
+
+// Cenário 3
+Then("deve mostrar que a imagem não carregou", () => {
+    cy.get('#item_0_img_link > .inventory_item_img').should("exist").then(($img) => {
+        expect($img[0].naturalWidth).to.equal(0);
+        //to.be.greaterThan(0); ele verifica se a imagem é maior que 0, se for quer dizer que carregou
+    })
+})
+
+// Cenário 4
+Then("o usuário deve visualizar a listagem de produto", () => {
+    cy.get('.peek')
+        .should('exist')
+        .should('be.visible')
+})
+
+
+
