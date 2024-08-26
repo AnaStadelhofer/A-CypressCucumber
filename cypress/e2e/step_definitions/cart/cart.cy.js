@@ -42,10 +42,7 @@ Then("o usuário deve retornar para a listagem", () => {
     cy.get('.cart_footer > .btn_secondary')
         .click()
 
-    cy.get('.product_label')
-        .should('exist')
-        .should('exist')
-        .contains('Products')
+    cy.ValidateProductsPage()
 })
 
 // Cenário 4

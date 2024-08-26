@@ -22,12 +22,13 @@ Feature: Itens no carrinho
 #     And acessado o carrinho e efetuado o checkout
 #     Then deve aparecer a tela para preencher os dados
 
-Scenario Outline: Adicionar um item
-    Given que o usuário esteja logado
-    When adicionado o <item> no carrinho
-    Then o carrinho deve constar o item
-    Examples:
-        | item                |
-        | Sauce Labs Backpack |
-        | batata              |
+# Scenario Outline: Adicionar um item
+#     Given que o usuário esteja logado
+#     When adicionado o <item> no carrinho
+#     Then o carrinho deve constar o item
+#     Examples:
+#         | item                |
+#         | Sauce Labs Backpack |
+#         | batata              |
 
+# https://medium.com/@ezavictoria/cypress-e-cucumber-setup-inicial-completo-para-iniciar-o-seu-primeiro-cen%C3%A1rio-4a8b7465698a

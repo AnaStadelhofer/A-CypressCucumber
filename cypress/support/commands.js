@@ -51,3 +51,17 @@ Cypress.Commands.add('Login', (username, password) => {
  Cypress.Commands.add('AcessCart', () => {
     cy.get('.fa-layers-counter').click()
  })
+
+ Cypress.Commands.add('ValidateProductsPage', () => {
+    cy.get('.product_label')
+        .should('exist')
+        .contains('Products')
+ })
+
+ Cypress.Commands.add('AccessCheckout', () => {
+    cy.get('.checkout_button').click()
+ })
+
+ Cypress.Commands.add("NextStageCheckout", () => {
+    cy.get('.cart_button').click()
+ })
