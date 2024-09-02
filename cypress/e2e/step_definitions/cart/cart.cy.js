@@ -59,11 +59,23 @@ Then("deve aparecer a tela para preencher os dados", () => {
 })
 
 // Cenário 5
+When("adicionado o {string} no carrinho", (item) => {
+    cy.get('.inventory_item_name')
+        .contains(item)
+        .click()
+    
+    cy.get('.btn_primary')
+        .click()
 
-When('adicionado o {string} no carrinho', (item) => {
-    console.log('Passo executado com item:', item);
+    Cypress.env('item', item);
 });
 
-Then('o carrinho deve constar o item', () => {
-    console.log('Chegou no passo Then');
+Then("o carrinho deve constar o item da lista", () => {
+    const item = Cypress.env('item')
+
+    cy.get('.fa-layers-counter')
+        .click()
+
+    cy.get('#cart_contents_container')
+        .contains(item)
 });

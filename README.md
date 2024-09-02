@@ -1,13 +1,27 @@
 # Cypress e Cucumber
 
-Este repositorio foi criado com a finalidade de estudar a integração do Cypress com o Cucumber, que é uma ferramente de teste de software que suporta o BDD (Behavior Driven Development), permintindo uma comunicação/entedimento mais eficaz e clara, até para pessoas sem o conhecimentos tecnicos.
+Este repositorio foi criado com a finalidade de estudar a integração do Cypress com o Cucumber, que é uma ferramenta de teste de software que suporta o BDD (Behavior Driven Development), permintindo uma comunicação/entedimento mais eficaz e clara, até para pessoas sem o conhecimentos tecnicos.
 
-npx cypress run
-npx cypress open
+Nele foi automatizado as seguintes funcionalidades:
 
-## Configurando o ambiente
+✅ Login
 
-Antes de tudo, temos que instalar algumas ferramentas necessárias para a execução dos testes:
+✅ Checkout
+
+✅ Cart
+
+✅ Products
+
+# Execução do projeto
+Para executar o projeto, podemos escolher dois modos de execução:
+
+1. ```npx cypress run```: irá rodar no mode headless, por baixo dos panos, exibindo a execução apenas no terminal;
+1. ```npx cypress open```: irá abrir o cypress e o navegador escolhido, mostrando a execução do teste no site.
+
+Ao rodar os testes no modo headless, ele gerará uma pasta de ```videos``` registrando o vídeo da execução de cada um dos testes, e também criará a pasta ```screenshots```, tirando print da tela dos cenários que ocorreram erro.
+
+# Configurando o ambiente
+Para a configuração do ambiente para rodar os testes, é necessário algumas ferramentas sejam instaladas:
 
 1. Instalar o [NodeJS](https://nodejs.org/dist/v20.16.0/node-v20.16.0-x64.msi);
 2. Instalar o [VS Code](https://code.visualstudio.com/download) ou alguma outra IDE de sua prefêrencia;
@@ -15,7 +29,7 @@ Antes de tudo, temos que instalar algumas ferramentas necessárias para a execu�
 
 Após a instalação deles, é necessário apenas efetuar o ```git clone``` do projeto. Após o clone, rodar o ```npm install``` para instalar todas as dependencias do projeto.
 
-Pronto! Agora para abrir e executar o projeto, pasta rodar o seguinte comando no terminal do windows dentro da pasta 'A-CypressCucumber': ```npx cypress open```
+Pronto! Agora para abrir e executar o projeto, pasta rodar o seguinte comando no terminal do windows dentro da pasta 'A-CypressCucumber': ```npx cypress open``` ou ```npx cypress run```.
 
 ## Como efetuar a configuração do zero?
 
@@ -86,8 +100,7 @@ A estrutura do projeto ficará da seguinte forma:
 
 Neste projeto foi usado o seguinte [site](https://vinothqaacademy.com/demo-site/) para a aplicação do cypress com cucumber.
 
-Para aprender sobre a implementação do cucumebr no cypress, foi utilizado dois blogs:
+Para aprender sobre a implementação do cucumber no cypress, foi utilizado dois blogs:
 - [Diego Yuri, cypress mais atualizado](https://dev.to/yuri-aprendendoqa/aprenda-a-implementar-cucumber-ao-cypress-em-testes-automatizados-4e62)
 - [Gabriel Cartelli, cypress mais antigo](https://medium.com/cwi-software/testes-automatizados-com-cypress-e-cucumber-d78b211da766)
-
 

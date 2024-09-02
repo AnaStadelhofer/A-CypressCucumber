@@ -41,19 +41,25 @@ Then("deve ser exibido o produto completo", () => {
         .should('exist')
 })
 
-// Cenário 4
+// Cenário 3
 When("adicionado no carrinho", () => {
     cy.get('.fa-layers-counter')
         .should('not.exist')
 
     cy.get('.btn_primary')
         .should("contain", ("ADD TO CART"))
-        .click()
-        .should('contain', 'REMOVE')
-})
+            .click()
+            .should('contain', 'REMOVE')
 
-Then("deve ser exibido o produto no carrinho", () => {
     cy.get('.fa-layers-counter')
         .should("exist")
         .should('contain', 1)
+})
+
+Then("o usuário deve retornar para a listagem", () => {
+    cy.get('.inventory_details_back_button').click()
+
+    cy.get('.product_label')
+        .should('exist')
+        .contains('Products')
 })

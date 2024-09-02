@@ -65,3 +65,14 @@ Cypress.Commands.add('Login', (username, password) => {
  Cypress.Commands.add("NextStageCheckout", () => {
     cy.get('.cart_button').click()
  })
+
+ Cypress.Commands.add("insertInformationCheckout", (name, lastname, zip) => {
+    cy.get('[data-test="firstName"]')   
+        .type(name)
+
+    cy.get('[data-test="lastName"]')
+        .type(lastname)
+
+    cy.get('[data-test="postalCode"]')
+        .type(zip)
+ })

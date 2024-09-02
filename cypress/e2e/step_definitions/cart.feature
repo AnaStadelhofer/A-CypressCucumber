@@ -1,34 +1,36 @@
 Feature: Itens no carrinho
 
-# Scenario: Adicionar todos itens ao carrinho
-#     Given que o usuário esteja logado
-#     When adicionado todos itens ao carrinho
-#     Then o carrinho deve constar o item
+Scenario: Adicionar todos itens ao carrinho
+    Given que o usuário esteja logado
+    When adicionado todos itens ao carrinho
+    Then o carrinho deve constar o item
 
-# Scenario: Remover um item do carrinho
-#     Given que o usuário esteja logado
-#     When adicionado todos itens ao carrinho
-#     And removido todos os itens
-#     Then o carrinho deve estar vazio
+Scenario: Remover um item do carrinho
+    Given que o usuário esteja logado
+    When adicionado todos itens ao carrinho
+    And removido todos os itens
+    Then o carrinho deve estar vazio
 
-# Scenario: Continuar compra do carrinho
-#     Given que o usuário esteja logado
-#     When adicionado todos itens ao carrinho
-#     Then o usuário deve retornar para a listagem
+Scenario: Continuar compra do carrinho
+    Given que o usuário esteja logado
+    When adicionado todos itens ao carrinho
+    Then o usuário deve retornar para a listagem
 
-# Scenario: Efetuar o checkout
-#     Given que o usuário esteja logado
-#     When adicionado todos itens ao carrinho
-#     And acessado o carrinho e efetuado o checkout
-#     Then deve aparecer a tela para preencher os dados
+Scenario: Efetuar o checkout
+    Given que o usuário esteja logado
+    When adicionado todos itens ao carrinho
+    And acessado o carrinho e efetuado o checkout
+    Then deve aparecer a tela para preencher os dados
 
-# Scenario Outline: Adicionar um item
-#     Given que o usuário esteja logado
-#     When adicionado o <item> no carrinho
-#     Then o carrinho deve constar o item
-#     Examples:
-#         | item                |
-#         | Sauce Labs Backpack |
-#         | batata              |
-
-# https://medium.com/@ezavictoria/cypress-e-cucumber-setup-inicial-completo-para-iniciar-o-seu-primeiro-cen%C3%A1rio-4a8b7465698a
+Scenario Outline: Adicionar um item
+    Given que o usuário esteja logado
+    When adicionado o "<item>" no carrinho
+    Then o carrinho deve constar o item da lista
+    Examples:
+        | item                              |
+        | Sauce Labs Backpack               |
+        | Sauce Labs Bolt T-Shirt           |
+        | Sauce Labs Onesie                 |
+        | Sauce Labs Bike Light             |
+        | Sauce Labs Fleece Jacket          |
+        | Test.allTheThings() T-Shirt (Red) |

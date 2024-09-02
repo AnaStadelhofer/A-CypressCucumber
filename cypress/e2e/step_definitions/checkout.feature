@@ -10,10 +10,12 @@ Scenario: Preencher primeira etapa
     When enviado com os campos preenchidos
     Then deve avançar para a próxima etapa
 
-# Scenario: Cancelar compra
-#     Given que o usuário esteja na tela de preenhcer dados
-#     When clicado para cancelar a compra
-#     Then deve retornar para a listagem de produto
+Scenario: Cancelar compra
+    Given que o usuário esteja na tela de preenhcer dados
+    When clicado para cancelar a compra
+    Then deve retornar para a listagem de produto
 
-# Scenario: Finalizar compra
-
+Scenario: Finalizar compra
+    Given que o usuário esteja na tela de Overview do pedido
+    When confirmado a compra
+    Then deve exibir uma agradecimento ao pedido
