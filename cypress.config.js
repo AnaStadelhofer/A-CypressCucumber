@@ -4,7 +4,6 @@ const { defineConfig } = require("cypress");
 module.exports = defineConfig({
   reporter: 'cypress-mochawesome-reporter',
   experimentalInteractiveRunEvents: true,
-  reporter: 'cypress-multi-reporters',
   reporterOptions: {
     reporterEnabled: 'mochawesome',
     mochawesomeReporterOptions: {

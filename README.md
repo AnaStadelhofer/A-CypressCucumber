@@ -16,7 +16,8 @@ Nele foi automatizado as seguintes funcionalidades:
 Para executar o projeto, podemos escolher dois modos de execução:
 
 1. ```npx cypress run```: irá rodar no mode headless, por baixo dos panos, exibindo a execução apenas no terminal;
-1. ```npx cypress open```: irá abrir o cypress e o navegador escolhido, mostrando a execução do teste no site.
+1. ```npx cypress open```: irá abrir o cypress e o navegador escolhido, mostrando a execução do teste no site;
+1. ```npm run test:reporter```: irá rodar os testes automatizados gerando o relatório do mocha.
 
 Ao rodar os testes no modo headless, ele gerará uma pasta de ```videos``` registrando o vídeo da execução de cada um dos testes, e também criará a pasta ```screenshots```, tirando print da tela dos cenários que ocorreram erro.
 
